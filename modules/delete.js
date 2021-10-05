@@ -21,4 +21,4 @@ const deletePark = async (request, response) => {
   }
 }
 
-module.exports = deletePark;
+module.exports = {deletePark};

@@ -19,6 +19,7 @@ function verifyUser(request, errOrUserCallback) {
 
   try {
     const token = request.headers.authorization.split(' ')[1];
+    console.log(token);
 
     jwt.verify(token, getKey, {}, errOrUserCallback);
   } catch (error) {
@@ -26,7 +27,6 @@ function verifyUser(request, errOrUserCallback) {
   }
 }
 
-console,log(token)
 
 
 module.exports = {verifyUser}
