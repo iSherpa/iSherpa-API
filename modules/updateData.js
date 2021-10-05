@@ -1,7 +1,7 @@
 const Park = require ('../schema/parks')
 
 
-updateParks = async (request, response) => {
+const updateParks = async (request, response) => {
   let id = request.params.id;
   try {
     const updatedActivities = await Park.findByIdAndUpdate(id, {...request.body}, {new: true});
