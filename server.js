@@ -8,8 +8,9 @@ const mongoose = require('mongoose')
 const app = express();
 const LOCAL = process.env.LOCAL
 const getParkData = require('./modules/Hike');
-const createPark = require('./modules/createPark')
 const activities = require('./modules/Activities');
+const createPark = require('./modules/createPark')
+const savedParks = require('./modules/savedParks')
 const update = require('./modules/updateData')
 const remove = require('./modules/delete')
 const verifyUser  = require('./modules/auth')
@@ -17,7 +18,7 @@ const verifyUser  = require('./modules/auth')
 
 app.use(cors());
 app.use(express.json());
-mongoose.connect(process.env.MONGODB_URI)
+mongoose.connect(process.env.DATABASE_MONGO_SERVER)
 
 
 
@@ -29,12 +30,14 @@ app.get('/', (request, response) => {
 app.get('/parks', getParkData.getParkData);
 //Get Activities Data
 app.get('/thingstodo', activities.getActivities);
+//Get Saved Parks Data
+app.get('/my-parks', savedParks.savedParks);
 // POST will be here
- app.post('/parks', createPark.createPark)
+app.post('/my-parks', createPark.createPark);
 // Delete Data from the DB
-app.delete('/parks/:id', remove.deletePark);
+app.delete('/my-parks/:id', remove.deletePark);
 // Updates Data from DB
-app.put('/parks/:id', update.updateParks);
+app.put('/my-parks/:id', update.updateParks);
 
 
 
