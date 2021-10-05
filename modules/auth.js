@@ -27,6 +27,4 @@ function verifyUser(request, errOrUserCallback) {
   }
 }
 
-
-
 module.exports = {verifyUser}
