@@ -8,6 +8,7 @@ const mongoose = require('mongoose')
 const app = express();
 const LOCAL = process.env.LOCAL
 const getParkData = require('./modules/Hike');
+const createPark = require('./modules/createPark')
 const activities = require('./modules/Activities');
 const update = require('./modules/updateData')
 const remove = require('./modules/delete')
@@ -29,7 +30,7 @@ app.get('/parks', getParkData.getParkData);
 //Get Activities Data
 app.get('/thingstodo', activities.getActivities);
 // POST will be here
-// app.post('/parks', functionHere)
+ app.post('/parks', createPark.createPark)
 // Delete Data from the DB
 app.delete('/parks/:id', remove.deletePark);
 // Updates Data from DB
