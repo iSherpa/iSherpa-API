@@ -4,11 +4,11 @@ require('dotenv').config();
 const express = require('express')
 const cors = require('cors')
 const mongoose = require('mongoose')
-
 const app = express();
 const LOCAL = process.env.LOCAL
 const hike = require('./modules/Hike');
 const activities = require('./modules/Activities');
+const update = require('./modules/updateData')
 app.use(cors());
 app.use(express.json());
 
@@ -18,6 +18,8 @@ app.get('/', (request, response) => {
 
 app.get('/parks', hike.getParkData);
 app.get('/thingstodo', activities.getActivities);
+
+app.put('/parks/:id', update.updateParks);
 
 
 
