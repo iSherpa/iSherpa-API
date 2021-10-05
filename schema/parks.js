@@ -13,4 +13,6 @@ const parksSchema = new Schema({
 
 });
 
-module.exports=parksSchema;
+const Park = mongoose.model('parks', parksSchema)
+
+module.exports= Park;

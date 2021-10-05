@@ -7,8 +7,10 @@ const mongoose = require('mongoose')
 
 const app = express();
 const LOCAL = process.env.LOCAL
-const hike = require('./modules/Hike');
+const getParkData = require('./modules/Hike');
 const activities = require('./modules/Activities');
+const { response } = require('express');
+const requestDelete = require('./modules/delete')
 app.use(cors());
 app.use(express.json());
 
@@ -16,8 +18,9 @@ app.get('/', (request, response) => {
   response.send('working');
 })
 
-app.get('/parks', hike.getParkData);
+app.get('/parks', getParkData.getParkData);
 app.get('/thingstodo', activities.getActivities);
+app.delete('/parks/:id', requestDelete);
 
 
 
