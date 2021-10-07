@@ -7,11 +7,13 @@ const createPark = async (request, response) => {
       fullName: parkInfo.fullName,
       email: parkInfo.email,
       description: parkInfo.description,
+      activities: parkInfo.activities,
       stateCode: parkInfo.stateCode,
       directionsInfo: parkInfo.directionsInfo,
-      activity: parkInfo.activity,
-      operatingHours: parkInfo.operatingHours,
-      contacts: parkInfo.contacts,
+      contactsEmail: parkInfo.contactsEmail,
+      contactsPhone: parkInfo.contactsPhone,
+      notes: parkInfo.notes,
+      images: parkInfo.images
       })
     response.status(200).send(addedPark);
   } catch (err) {
